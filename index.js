@@ -1,14 +1,18 @@
 const React = require("react");
 
-export default React.forwardRef(function Link(
-    { href, ...props },
-    ref = React.useRef()
-) {
+function Link({ href, ...props }, ref) {
+    const innerRef = React.useRef();
+
+    React.useImperativeHandle(ref, () => innerRef);
+
     React.useLayoutEffect(() => {
-        ref.current.setAttribute("href", href);
+        innerRef.current.setAttribute("href", href);
     }, [href]);
+
     return React.createElement("a", {
-        ref,
+        ref: innerRef,
         ...props
     });
-});
+}
+
+export default React.forwardRef(Link);

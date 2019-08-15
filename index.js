@@ -3,7 +3,7 @@ const React = require("react");
 function Link({ href, ...props }, ref) {
     const innerRef = React.useRef();
 
-    React.useImperativeHandle(ref, () => innerRef);
+    React.useImperativeHandle(ref, () => innerRef.current);
 
     React.useLayoutEffect(() => {
         innerRef.current.setAttribute("href", href);

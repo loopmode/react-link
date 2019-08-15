@@ -4,6 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "repository": "github:loopmode/react-link",
+  "publishConfig": {
+    "access": "public"
+  },
   "peerDependencies": {
     "react": ">=16.8.0"
   }
